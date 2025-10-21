@@ -1,0 +1,26 @@
+<div style="max-width: 400px; margin: auto; padding: 20px;">
+
+  <h2>Lista de Números</h2>
+
+  <input type="number" 
+    [(ngModel)]="novoNumero"
+    placeholder="Digite um numero" 
+  />
+
+  <button (click)="adicionarNumero()">
+    Adicionar Número</button>
+
+  <ul>
+    <li *ngFor="let numero of listaNumeros; let i = index">
+      {{numero}}
+      <button (click)="removerNumero(i)">Remover</button>
+    </li>
+  </ul>
+
+  <div *ngIf="listaNumeros.length > 0" 
+    style="margin-top: 1rem; font-weight: bold">
+    Soma: {{ soma }} <br>
+    Média dos números: {{ media }}
+  </div>
+
+</div>

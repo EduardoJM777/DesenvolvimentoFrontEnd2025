@@ -1,0 +1,38 @@
+<div>
+
+  <input
+      [(ngModel)]="produto"
+      class="input"
+      type="text"
+      placeholder="Insira o produto."
+      style="margin-bottom: 0.5rem;
+             margin-right: 0.5rem"
+  />
+
+  <input
+      [(ngModel)]="valor"
+      class="input"
+      type="number"
+      placeholder="Insira o valor."
+      style="margin-bottom: 0.5rem"
+  />
+
+  <button (click)="adicionarProduto();adicionarValor()"
+    class="botao">
+    Adicionar Produto
+  </button>
+
+  <ul class="lista">
+    ---- Lista de compras -----
+    <li *ngFor="let item of listaProdutos; let i = index">
+      Produto: {{item}} - Valor: R${{listaValores[i]}}
+      <button (click)="removerProduto(i);removerValor(i)">Remover</button>
+    </li>
+  </ul>
+
+  <div *ngIf="listaValores.length > 0"
+    style="margin-top: 1rem; font-weight: bold">
+    Valor Total: {{ soma }}
+  </div>
+
+</div>
