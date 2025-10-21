@@ -1,0 +1,36 @@
+<div class="cardPrincipal">
+  <h2>Retorna Maior</h2>
+
+  <div style="margin-bottom: 1rem">
+
+    <input
+      [(ngModel)]="numero1"
+      class="inputPadrao"
+      type="number"
+      placeholder="Informe um número"
+      style="margin-bottom: 0.5rem"
+    />
+
+    <input
+      [(ngModel)]="numero2"
+      class="inputPadrao"
+      type="number"
+      placeholder="Informe um número"
+    />
+  </div>
+
+  <button class="botaoPadrao" (click)="funcaoMaior()">
+    Somar
+  </button>
+
+  <div *ngIf="maior !== null" style="margin-top: 1rem; 
+  font-weight: bold">
+    O maior é: {{ maior }}
+  </div>
+
+  <div *ngIf="numero1==numero2" style="margin-top: 1rem;
+  font-weight: bold">
+    {{ igual }}
+  </div>
+
+</div>

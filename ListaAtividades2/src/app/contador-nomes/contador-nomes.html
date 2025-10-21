@@ -1,0 +1,29 @@
+<div>
+
+  <input
+    [(ngModel)]="nome"
+    class="input"
+    type="text"
+    placeholder="Insira um nome."
+    style="margin-bottom: 0.5rem"
+  />
+
+  <button (click)="adicionarNome()"
+          class="botao">
+    Adicionar
+  </button>
+
+  <ul>
+    LISTA DE NOMES:
+    <li *ngFor="let item of listaNomes; let i = index">
+      {{item}}
+      <button (click)="removerNome(i)">Remover</button>
+    </li>
+  </ul>
+
+  <div *ngIf="listaNomes.length > 0"
+    style="margin-top: 1rem; font-weight: bold">
+    Quantidade de nomes: {{ listaNomes.length }}
+  </div>
+
+</div>

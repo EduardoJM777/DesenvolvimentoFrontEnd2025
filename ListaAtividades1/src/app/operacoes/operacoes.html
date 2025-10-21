@@ -1,0 +1,42 @@
+<div class="cardPrincipal">
+  <h2> Operações</h2>
+
+  <div style="margin-bottom: 1rem">
+
+    <input
+      [(ngModel)]="valor1"
+      class="input"
+      type="number"
+      placeholder="Insira um valor."
+      style="margin-bottom: 0.5rem"
+    />
+
+    <input
+    [(ngModel)]="valor2"
+      class="input"
+      type="number"
+      placeholder="Insira um valor."
+      style="margin-bottom: 0.5rem"
+    />
+
+    <input
+      [(ngModel)]="valor3"
+      class="input"
+      type="number"
+      placeholder="Insira um valor."
+      style="margin-bottom: 0.5rem"
+    />
+
+    <button class="botao" (click)="calcularMedias()">
+      Calcular
+    </button>
+  
+    <div 
+    *ngIf="resultado !== null" 
+    style="margin-bottom: 1rem;font-weight: bold"
+    [innerHTML]="'Resultado: '+resultado">
+    </div>
+
+  </div>
+
+</div>
