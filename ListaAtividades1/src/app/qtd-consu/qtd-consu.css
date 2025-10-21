@@ -1,0 +1,22 @@
+.cardPrincipal{
+  max-width: 300px;
+  margin: 2rem auto;
+  padding: 3rem;
+  border: 2px solid black;
+  border-radius: 3px;
+  box-shadow: 0 3px 3px black;
+}
+
+.botao{
+  width: 100%;
+  padding: 0.8rem;
+  background: green;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+.input{
+  width: 100%;
+  padding: 0.5rem;
+}
