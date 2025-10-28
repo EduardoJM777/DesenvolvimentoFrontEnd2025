@@ -1,0 +1,49 @@
+<h2>Cadastro de Alunos</h2>
+
+<form (ngSubmit)="adicionarDisciplina()" 
+        #form="ngForm" style="margin-bottom: 20px;">
+
+    <div>
+        <label>Nome:</label>
+        <input type="text" 
+            [(ngModel)]="novaDisciplina.nome"
+            name="nome" required />
+    </div>
+    <div>
+        <label>Professor:</label>
+        <input type="text" 
+            [(ngModel)]="novaDisciplina.professor"
+            name="professor" required />
+    </div>
+    <div>
+        <label>Curso:</label>
+        <input type="text" 
+            [(ngModel)]="novaDisciplina.curso"
+            name="curso" required />
+    </div>
+
+    <button type="submit" [disabled]="form.invalid">Cadastrar</button>
+
+</form>
+
+<h3>Disciplinas Cadastradas</h3>
+
+<table [cellPadding]="5" style="border-collapse: collapse;
+                                border: 1px solid black;">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Professor</th>
+            <th>Curso</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let disciplina of listaDisciplinas">
+            <td>{{ disciplina.nome }}</td>
+            <td>{{ disciplina.professor }}</td>
+            <td>{{ disciplina.curso }}</td>
+        </tr>
+    </tbody>
+</table>
+
+
