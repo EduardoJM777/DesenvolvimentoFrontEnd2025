@@ -5,8 +5,7 @@ import { ProfessorComponent } from './professor/professor';
 
 
 export const routes: Routes = [
-    {path: 'aluno', component: AlunoComponent},
+    {path: '', component: AlunoComponent},
     {path: 'disciplina', component: DisciplinaComponent},
-    {path: 'professor', component: ProfessorComponent},
-    {path: '', redirectTo: 'aluno', pathMatch: 'full'}
+    {path: 'professor', component: ProfessorComponent}
 ];
