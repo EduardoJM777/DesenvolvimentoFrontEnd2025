@@ -27,6 +27,37 @@
             [(ngModel)]="novoAluno.curso"
             name="curso" required />
     </div>
+    <div>
+        <label>CEP:</label>
+        <input type="text" 
+            [(ngModel)]="novoAluno.cep"
+            name="cep" required
+            (input)="buscarCep()" /> 
+    </div>
+    <div>
+        <label>Logradouro:</label>
+        <input type="text" 
+            [(ngModel)]="novoAluno.logradouro"
+            name="logradouro" required/> 
+    </div>
+    <div>
+        <label>Bairro:</label>
+        <input type="text" 
+            [(ngModel)]="novoAluno.bairro"
+            name="bairro" required/> 
+    </div>
+    <div>
+        <label>Municipio:</label>
+        <input type="text" 
+            [(ngModel)]="novoAluno.municipio"
+            name="municipio" required/> 
+    </div>
+    <div>
+        <label>UF:</label>
+        <input type="text" 
+            [(ngModel)]="novoAluno.uf"
+            name="uf" required/> 
+    </div>
 
     <button type="submit" [disabled]="form.invalid">Cadastrar</button>
 
