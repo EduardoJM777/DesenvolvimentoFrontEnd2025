@@ -46,5 +46,19 @@
     </tbody>
 </table>
 
+<h3>Disciplinas/Professor</h3>
+<table [cellPadding]="5" style="border-collapse: collapse; border: 1px solid black;">
+    <thead>
+        <tr *ngFor="let professor of ListaProfessor">
+            <th>{{professor.nome}}</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let disciplina of ListaDisciplina">
+            <td>{{disciplina.nome}}</td>
+        </tr>
+    </tbody>
+</table>
+
 <button (click)="cadAluno()">Ir para Alunos</button>
 <button (click)="cadProfessor()">Ir para Professores</button>

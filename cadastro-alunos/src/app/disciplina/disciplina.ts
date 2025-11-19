@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { DisciplinaService } from '../services/disciplina.service';
 import { Disciplina } from '../models/disciplina.model';
 import { Router } from '@angular/router';
+import { Professor } from '../models/professor.model';
+import { ProfessorService } from '../services/professor.service';
 
 
 @Component({
@@ -15,10 +17,13 @@ import { Router } from '@angular/router';
 export class DisciplinaComponent {
 
   novaDisciplina: Disciplina = {nome: '', professor: {matricula: '', nome: '', cpf: '', dtAdmissao: ''}, curso: ''};
+  listaProfessor: Professor[] = [];
   listaDisciplinas: Disciplina[] = [];
+  
 
-  constructor(private disciplinaService: DisciplinaService, private router: Router){
+  constructor(private disciplinaService: DisciplinaService, private professorService: ProfessorService, private router: Router){
     this.listaDisciplinas = this.disciplinaService.getDisciplinas();
+    this.listaProfessor = this.professorService.getProfessores();
   }
 
   adicionarDisciplina(){
