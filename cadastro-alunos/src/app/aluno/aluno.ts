@@ -25,7 +25,7 @@ export class AlunoComponent {
   }
 
   adicionarAluno(){
-    this.alunoService.adicionarAluno({ ...this.novoAluno});
+    this.alunoService.adicionarAluno({...this.novoAluno});
     this.novoAluno = {ra: '', nome: '', dtNascimento: '', curso: '', cep: '', 
                       logradouro: '', bairro: '', municipio: '', uf: ''};
   }

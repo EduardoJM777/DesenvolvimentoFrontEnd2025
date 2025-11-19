@@ -16,7 +16,7 @@ import { ProfessorService } from '../services/professor.service';
 })
 export class DisciplinaComponent {
 
-  novaDisciplina: Disciplina = {nome: '', professor: {matricula: '', nome: '', cpf: '', dtAdmissao: ''}, curso: ''};
+  novaDisciplina: Disciplina = {nome: '', professor: {id: 0, matricula: '', nome: '', cpf: '', dtAdmissao: ''}, professorId: 0, curso: ''};
   listaProfessor: Professor[] = [];
   listaDisciplinas: Disciplina[] = [];
   
@@ -28,7 +28,7 @@ export class DisciplinaComponent {
 
   adicionarDisciplina(){
     this.disciplinaService.adicionarDisciplina({ ...this.novaDisciplina});
-    this.novaDisciplina = {nome: '', professor: {matricula: '', nome: '', cpf: '', dtAdmissao: ''}, curso: ''};
+    this.novaDisciplina = {nome: '', professor: {id: 0, matricula: '', nome: '', cpf: '', dtAdmissao: ''}, professorId: 0, curso: ''};
   }
 
   cadAluno(){
@@ -37,6 +37,10 @@ export class DisciplinaComponent {
 
   cadProfessor(){
     this.router.navigate(['/professor']);
+  }
+
+  ngOnInit(): void{
+    this.listaProfessor = this.professorService.getProfessores();
   }
 
 

@@ -11,9 +11,12 @@
     </div>
     <div>
         <label>Professor:</label>
-        <input type="text" 
-            [(ngModel)]="novaDisciplina.professor"
-            name="professor" required />
+        <select [(ngModel)]="novaDisciplina.professorId" name="professorId" required>
+            <option value="">Selecione...</option>
+            <option *ngFor="let prof of listaProfessor" [value]="prof.id">
+                {{ prof.nome }}
+            </option>
+        </select>
     </div>
     <div>
         <label>Curso:</label>
@@ -40,7 +43,7 @@
     <tbody>
         <tr *ngFor="let disciplina of listaDisciplinas">
             <td>{{ disciplina.nome }}</td>
-            <td>{{ disciplina.professor }}</td>
+            <td>{{ disciplina.professor.nome }}</td>
             <td>{{ disciplina.curso }}</td>
         </tr>
     </tbody>
@@ -49,12 +52,12 @@
 <h3>Disciplinas/Professor</h3>
 <table [cellPadding]="5" style="border-collapse: collapse; border: 1px solid black;">
     <thead>
-        <tr *ngFor="let professor of ListaProfessor">
+        <tr *ngFor="let professor of listaProfessor">
             <th>{{professor.nome}}</th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let disciplina of ListaDisciplina">
+        <tr *ngFor="let disciplina of listaDisciplinas">
             <td>{{disciplina.nome}}</td>
         </tr>
     </tbody>

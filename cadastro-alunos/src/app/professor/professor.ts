@@ -15,23 +15,23 @@ import { DisciplinaService } from '../services/disciplina.service';
 })
 export class ProfessorComponent {
 
-  novoProfessor: Professor = {matricula: '', nome: '', cpf: '', dtAdmissao: ''};
+  novoProfessor: Professor = {id: 0, matricula: '', nome: '', cpf: '', dtAdmissao: ''};
   listaProfessores: Professor[] = [];
 
   novaDisciplina: Disciplina = {nome:'',
-    professor:{matricula:'', nome: '', cpf:'', dtAdmissao:''}, curso:'' };
+    professor:{id: 0, matricula:'', nome: '', cpf:'', dtAdmissao:''}, professorId: 0, curso:'' };
 
   constructor(private professorService: ProfessorService, private discipinaService: DisciplinaService, private router: Router){
   }
 
   adicionarProfessor(){
     this.professorService.adicionarProfessor({ ...this.novoProfessor});
-    this.novoProfessor = {matricula: '', nome: '', cpf: '', dtAdmissao: ''};
+    this.novoProfessor = {id: 0, matricula: '', nome: '', cpf: '', dtAdmissao: ''};
   }
 
   listaDisciplinas(){
     this.discipinaService.adicionarDisciplina({...this.novaDisciplina});
-    this.novaDisciplina = {nome: '', professor:{matricula: '', nome: '', cpf:'', dtAdmissao: ''}, curso: ''};
+    this.novaDisciplina = {nome: '', professor:{id: 0, matricula: '', nome: '', cpf:'', dtAdmissao: ''}, professorId: 0, curso: ''};
   }
 
   cadAluno(){

@@ -38,6 +38,7 @@
                                 border: 1px solid black;">
     <thead>
         <tr>
+            <th>ID</th>
             <th>Matricula</th>
             <th>Nome</th>
             <th>CPF</th>
@@ -46,6 +47,7 @@
     </thead>
     <tbody>
         <tr *ngFor="let professor of listaProfessores">
+            <td>{{ professor.id }}</td>
             <td>{{ professor.matricula }}</td>
             <td>{{ professor.nome }}</td>
             <td>{{ professor.cpf }}</td>
