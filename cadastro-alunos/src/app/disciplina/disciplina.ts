@@ -7,28 +7,39 @@ import { Router } from '@angular/router';
 import { Professor } from '../models/professor.model';
 import { ProfessorService } from '../services/professor.service';
 
-
 @Component({
   selector: 'app-disciplina',
   imports: [CommonModule, FormsModule],
   templateUrl: './disciplina.html',
   styleUrl: './disciplina.css'
 })
+
 export class DisciplinaComponent {
 
-  novaDisciplina: Disciplina = {nome: '', professor: {id: 0, matricula: '', nome: '', cpf: '', dtAdmissao: ''}, professorId: 0, curso: ''};
-  listaProfessor: Professor[] = [];
+  novaDisciplina = {nome: '', 
+    professor: {id: 0, matricula: '', nome: '', cpf: '', dtAdmissao: ''}, 
+                    curso: ''};
+  listaProfessores: Professor[] = [];
   listaDisciplinas: Disciplina[] = [];
   
 
   constructor(private disciplinaService: DisciplinaService, private professorService: ProfessorService, private router: Router){
     this.listaDisciplinas = this.disciplinaService.getDisciplinas();
-    this.listaProfessor = this.professorService.getProfessores();
+    this.listaProfessores = this.professorService.getProfessores();
   }
 
   adicionarDisciplina(){
-    this.disciplinaService.adicionarDisciplina({ ...this.novaDisciplina});
-    this.novaDisciplina = {nome: '', professor: {id: 0, matricula: '', nome: '', cpf: '', dtAdmissao: ''}, professorId: 0, curso: ''};
+
+    // const prof = this.listaProfessores.find(p => p.id === this.novaDisciplina.professor.id);
+    // if (!prof) return;
+
+    this.disciplinaService.adicionarDisciplina({...this.novaDisciplina});
+
+    this.listaDisciplinas = this.disciplinaService.getDisciplinas();
+
+    this.novaDisciplina = {nome: '', 
+      professor: {id: 0, matricula: '', nome: '', cpf: '', dtAdmissao: ''}, 
+                           curso: ''};
   }
 
   cadAluno(){
@@ -38,10 +49,5 @@ export class DisciplinaComponent {
   cadProfessor(){
     this.router.navigate(['/professor']);
   }
-
-  ngOnInit(): void{
-    this.listaProfessor = this.professorService.getProfessores();
-  }
-
 
 }

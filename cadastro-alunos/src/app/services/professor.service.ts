@@ -9,7 +9,7 @@ export class ProfessorService {
 
     private professores: Professor[] = [];
 
-    adicionarProfessor(professor: Professor): void{
+    adicionarProfessor(professor: Professor){
         professor.id = this.professores.length + 1;
         this.professores.push(professor);
     }

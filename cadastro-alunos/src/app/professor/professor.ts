@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { ProfessorService } from '../services/professor.service';
 import { Professor } from '../models/professor.model';
 import { Router } from '@angular/router';
-import { Disciplina } from '../models/disciplina.model';
+//import { Disciplina } from '../models/disciplina.model';
 import { DisciplinaService } from '../services/disciplina.service';
 
 @Component({
@@ -13,26 +13,29 @@ import { DisciplinaService } from '../services/disciplina.service';
   templateUrl: './professor.html',
   styleUrl: './professor.css'
 })
+
 export class ProfessorComponent {
 
   novoProfessor: Professor = {id: 0, matricula: '', nome: '', cpf: '', dtAdmissao: ''};
   listaProfessores: Professor[] = [];
 
-  novaDisciplina: Disciplina = {nome:'',
-    professor:{id: 0, matricula:'', nome: '', cpf:'', dtAdmissao:''}, professorId: 0, curso:'' };
+  // novaDisciplina: Disciplina = {nome:'',
+  //   professor:{id: 0, matricula:'', nome: '', cpf:'', dtAdmissao:''}, 
+  //                               professorId: 0, curso:'' };
 
   constructor(private professorService: ProfessorService, private discipinaService: DisciplinaService, private router: Router){
+    this.listaProfessores = this.professorService.getProfessores();
   }
 
   adicionarProfessor(){
-    this.professorService.adicionarProfessor({ ...this.novoProfessor});
+    this.professorService.adicionarProfessor({ ...this.novoProfessor });
     this.novoProfessor = {id: 0, matricula: '', nome: '', cpf: '', dtAdmissao: ''};
   }
 
-  listaDisciplinas(){
-    this.discipinaService.adicionarDisciplina({...this.novaDisciplina});
-    this.novaDisciplina = {nome: '', professor:{id: 0, matricula: '', nome: '', cpf:'', dtAdmissao: ''}, professorId: 0, curso: ''};
-  }
+  // listaDisciplinas(){
+  //   this.discipinaService.adicionarDisciplina({...this.novaDisciplina});
+  //   this.novaDisciplina = {nome: '', professor:{id: 0, matricula: '', nome: '', cpf:'', dtAdmissao: ''}, professorId: 0, curso: ''};
+  // }
 
   cadAluno(){
     this.router.navigate(['']);

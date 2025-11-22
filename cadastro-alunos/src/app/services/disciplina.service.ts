@@ -9,7 +9,7 @@ export class DisciplinaService {
 
     private disciplinas: Disciplina[] = [];
 
-    adicionarDisciplina(disciplina: Disciplina): void{
+    adicionarDisciplina(disciplina: Disciplina){
         this.disciplinas.push(disciplina);
     }
 
