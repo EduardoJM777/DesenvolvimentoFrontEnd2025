@@ -30,9 +30,6 @@ export class DisciplinaComponent {
 
   adicionarDisciplina(){
 
-    // const prof = this.listaProfessores.find(p => p.id === this.novaDisciplina.professor.id);
-    // if (!prof) return;
-
     this.disciplinaService.adicionarDisciplina({...this.novaDisciplina});
 
     this.listaDisciplinas = this.disciplinaService.getDisciplinas();
@@ -40,6 +37,10 @@ export class DisciplinaComponent {
     this.novaDisciplina = {nome: '', 
       professor: {id: 0, matricula: '', nome: '', cpf: '', dtAdmissao: ''}, 
                            curso: ''};
+  }
+
+  getDisciplinasDoProfessor(prof: Professor): Disciplina[]{
+    return this.listaDisciplinas.filter(d => d.professor.nome === prof.nome);
   }
 
   cadAluno(){

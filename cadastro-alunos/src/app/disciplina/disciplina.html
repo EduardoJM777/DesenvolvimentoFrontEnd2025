@@ -49,19 +49,20 @@
     </tbody>
 </table>
 
-<!-- <h3>Disciplinas/Professor</h3>
-<table [cellPadding]="5" style="border-collapse: collapse; border: 1px solid black;">
-    <thead>
-        <tr *ngFor="let professor of listaProfessor">
-            <th>{{professor.nome}}</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let disciplina of listaDisciplinas">
-            <td>{{disciplina.nome}}</td>
-        </tr>
-    </tbody>
-</table> -->
+<h3>Disciplinas/Professor</h3>
+<div *ngFor="let professor of listaProfessores" style="margin-bottom: 20px;">
+    <h4>{{ professor.nome }}</h4>
+
+    <ul>
+        <li *ngFor="let disciplinas of getDisciplinasDoProfessor(professor)">
+            {{ disciplinas.nome }} ({{ disciplinas.curso }})
+        </li>
+    </ul>
+
+    <p *ngIf="getDisciplinasDoProfessor(professor).length === 0">
+        Nenhuma disciplina cadastrada
+    </p>
+</div>
 
 <button (click)="cadAluno()">Ir para Alunos</button>
 <button (click)="cadProfessor()">Ir para Professores</button>
