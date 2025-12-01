@@ -1,20 +1,26 @@
-import { Injectable } from "@angular/core";
-import { Aluno } from "../models/aluno.model";
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Aluno } from '../models/aluno.model';
 
 @Injectable({
-    providedIn: 'root',
+  providedIn: 'root'
 })
+export class AlunoService {
 
-export class AlunoService{
-    private alunos: Aluno[] = [];
+  private baseUrl = "http://localhost:8080/alunos";
 
-    adicionarAluno(aluno: Aluno): void {
-        this.alunos.push(aluno);
-    }
+  constructor(private http: HttpClient) {}
 
-    getAlunos(): Aluno[]{
-        return this.alunos;
+  // BUSCAR TODOS OS ALUNOS DO BACKEND
+  listar(): Observable<Aluno[]> {
+    return this.http.get<Aluno[]>(this.baseUrl);
+  }
+
+  salvar(aluno: Aluno): Observable<Aluno> {
+        const payload = {...aluno};
+        delete payload.id;
+        return this.http.post<Aluno>(this.baseUrl, payload);
     }
 
 }
-

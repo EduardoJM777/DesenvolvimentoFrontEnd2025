@@ -16,27 +16,33 @@ import { ProfessorService } from '../services/professor.service';
 
 export class DisciplinaComponent {
 
-  novaDisciplina = {nome: '', 
-    professor: {id: 0, matricula: '', nome: '', cpf: '', dtAdmissao: ''}, 
-                    curso: ''};
+  novaDisciplina = {id: null, codigo: 0, descricao: '', ementa: '',
+    professor: {id: null, matricula: '', nome: '', cpf: ''}
+  };
   listaProfessores: Professor[] = [];
   listaDisciplinas: Disciplina[] = [];
   
 
   constructor(private disciplinaService: DisciplinaService, private professorService: ProfessorService, private router: Router){
-    this.listaDisciplinas = this.disciplinaService.getDisciplinas();
-    this.listaProfessores = this.professorService.getProfessores();
+    this.disciplinaService.listar().subscribe({
+      next: (dados) => this.listaDisciplinas = dados,
+      error: (err) => console.error(err)
+    });
+    this.professorService.listar().subscribe({
+      next: (dados) => this.listaProfessores = dados,
+      error: (err) => console.error(err)
+    });
   }
 
   adicionarDisciplina(){
-
-    this.disciplinaService.adicionarDisciplina({...this.novaDisciplina});
-
-    this.listaDisciplinas = this.disciplinaService.getDisciplinas();
-
-    this.novaDisciplina = {nome: '', 
-      professor: {id: 0, matricula: '', nome: '', cpf: '', dtAdmissao: ''}, 
-                           curso: ''};
+    this.disciplinaService.salvar({ ...this.novaDisciplina }).subscribe({
+      next: (resp) => {
+        this.listaDisciplinas.push(resp);
+        this.novaDisciplina = {id: null, codigo: 0, descricao: '', ementa: '',
+          professor: {id: null, matricula: '', nome: '', cpf: ''}
+        }
+      }
+    });
   }
 
   getDisciplinasDoProfessor(prof: Professor): Disciplina[]{

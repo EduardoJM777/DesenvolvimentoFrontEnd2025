@@ -1,6 +1,6 @@
 <h2>Cadastro de Alunos</h2>
 
-<form (ngSubmit)="adicionarAluno()" 
+<form (ngSubmit)="cadastrarAluno()" 
         #form="ngForm" style="margin-bottom: 20px;">
 
     <div>
@@ -16,48 +16,23 @@
             name="nome" required />
     </div>
     <div>
-        <label>Data de Nascimento:</label>
+        <label>CPF:</label>
         <input type="text" 
-            [(ngModel)]="novoAluno.dtNascimento"
-            name="dtNascimento" required />
+            [(ngModel)]="novoAluno.cpf"
+            name="cpf" required />
     </div>
     <div>
-        <label>Curso:</label>
-        <input type="text" 
-            [(ngModel)]="novoAluno.curso"
-            name="curso" required />
-    </div>
-    <!-- <div>
-        <label>CEP:</label>
-        <input type="text" 
-            [(ngModel)]="novoAluno.cep"
-            name="cep" required
-            (input)="buscarCep()" /> 
+        <label>Ano Ingresso:</label>
+        <input type="number" 
+            [(ngModel)]="novoAluno.anoIngresso"
+            name="anoIngresso" required />
     </div>
     <div>
-        <label>Logradouro:</label>
-        <input type="text" 
-            [(ngModel)]="novoAluno.logradouro"
-            name="logradouro" required/> 
+        <label>Período Atual:</label>
+        <input type="number" 
+            [(ngModel)]="novoAluno.periodoAtual"
+            name="periodoAtual" required />
     </div>
-    <div>
-        <label>Bairro:</label>
-        <input type="text" 
-            [(ngModel)]="novoAluno.bairro"
-            name="bairro" required/> 
-    </div>
-    <div>
-        <label>Municipio:</label>
-        <input type="text" 
-            [(ngModel)]="novoAluno.municipio"
-            name="municipio" required/> 
-    </div>
-    <div>
-        <label>UF:</label>
-        <input type="text" 
-            [(ngModel)]="novoAluno.uf"
-            name="uf" required/> 
-    </div> -->
 
     <button type="submit" [disabled]="form.invalid">Cadastrar</button>
 
@@ -71,16 +46,18 @@
         <tr>
             <th>RA</th>
             <th>Nome</th>
-            <th>Data de Nascimento</th>
-            <th>Curso</th>
+            <th>CPF</th>
+            <th>Ano Ingresso</th>
+            <th>Periodo Atual</th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let aluno of listaAlunos">
             <td>{{ aluno.ra }}</td>
             <td>{{ aluno.nome }}</td>
-            <td>{{ aluno.dtNascimento }}</td>
-            <td>{{ aluno.curso }}</td>
+            <td>{{ aluno.cpf }}</td>
+            <td>{{ aluno.anoIngresso }}</td>
+            <td>{{ aluno.periodoAtual }}</td>
         </tr>
     </tbody>
 </table>

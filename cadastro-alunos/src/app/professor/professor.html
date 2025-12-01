@@ -21,12 +21,6 @@
             [(ngModel)]="novoProfessor.cpf"
             name="cpf" required />
     </div>
-    <div>
-        <label>Data de Admissão:</label>
-        <input type="text" 
-            [(ngModel)]="novoProfessor.dtAdmissao"
-            name="dtAdmissao" required />
-    </div>
 
     <button type="submit" [disabled]="form.invalid">Cadastrar</button>
 
@@ -42,7 +36,6 @@
             <th>Matricula</th>
             <th>Nome</th>
             <th>CPF</th>
-            <th>Data de Admissao</th>
         </tr>
     </thead>
     <tbody>
@@ -51,7 +44,6 @@
             <td>{{ professor.matricula }}</td>
             <td>{{ professor.nome }}</td>
             <td>{{ professor.cpf }}</td>
-            <td>{{ professor.dtAdmissao }}</td>
         </tr>
     </tbody>
 </table>

@@ -4,10 +4,22 @@
         #form="ngForm" style="margin-bottom: 20px;">
 
     <div>
-        <label>Nome:</label>
+        <label>Codigo:</label>
+        <input type="number" 
+            [(ngModel)]="novaDisciplina.codigo"
+            name="codigo" required />
+    </div>
+    <div>
+        <label>Descrição:</label>
         <input type="text" 
-            [(ngModel)]="novaDisciplina.nome"
+            [(ngModel)]="novaDisciplina.descricao"
             name="nome" required />
+    </div>
+    <div>
+        <label>Ementa:</label>
+        <input type="text" 
+            [(ngModel)]="novaDisciplina.ementa"
+            name="ementa" required />
     </div>
     <div>
         <label>Professor:</label>
@@ -17,12 +29,6 @@
                 {{ prof.nome }}
             </option>
         </select>
-    </div>
-    <div>
-        <label>Curso:</label>
-        <input type="text" 
-            [(ngModel)]="novaDisciplina.curso"
-            name="curso" required />
     </div>
 
     <button type="submit" [disabled]="form.invalid">Cadastrar</button>
@@ -35,16 +41,18 @@
                                 border: 1px solid black;">
     <thead>
         <tr>
-            <th>Nome</th>
+            <th>Código</th>
+            <th>Descrição</th>
+            <th>Ementa</th>
             <th>Professor</th>
-            <th>Curso</th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let disciplina of listaDisciplinas">
-            <td>{{ disciplina.nome }}</td>
+            <td>{{ disciplina.codigo }}</td>
+            <td>{{ disciplina.descricao }}</td>
+            <td>{{ disciplina.ementa }}</td>
             <td>{{ disciplina.professor.nome }}</td>
-            <td>{{ disciplina.curso }}</td>
         </tr>
     </tbody>
 </table>
@@ -55,7 +63,7 @@
 
     <ul>
         <li *ngFor="let disciplinas of getDisciplinasDoProfessor(professor)">
-            {{ disciplinas.nome }} ({{ disciplinas.curso }})
+            {{ disciplinas.descricao }} ({{ disciplinas.ementa }})
         </li>
     </ul>
 

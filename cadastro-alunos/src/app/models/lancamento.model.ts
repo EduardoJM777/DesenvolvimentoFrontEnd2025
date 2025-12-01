@@ -1,5 +1,7 @@
 import { Aluno } from "./aluno.model";
 import { Disciplina } from "./disciplina.model";
+import { Situacao } from "./situacao.enum";
+
 
 export interface Lancamento {
 
@@ -7,14 +9,19 @@ export interface Lancamento {
     disciplina: Disciplina;
 
     notas: {
-        bimestre1: number;
-        bimestre2: number;
+        nota1Bim: number;
+        nota2Bim: number;
     };
 
     faltas: {
-        bimestre1: number;
-        bimestre2: number;
+        falta1Bim: number;
+        falta2Bim: number;
     };
+    
+    matriculado:boolean;
+
+    
+    situacao: Situacao;
 
 }
 

@@ -1,7 +1,9 @@
 import { Professor } from "./professor.model";
 
 export interface Disciplina {
-    nome: string;
+    id?: number | null;
+    codigo: number;
+    descricao: string;
+    ementa: string;
     professor: Professor;
-    curso: string;
 }

@@ -1,1 +1,176 @@
-/* You can add global styles to this file, and also import other style files */
+:root{
+  --bg: #f5f7fb;
+  --card: #ffffff;
+  --muted: #6b7280;
+  --accent: #2563eb;
+  --accent-600: #1e40af;
+  --success: #16a34a;
+  --danger: #ef4444;
+  --glass: rgba(255,255,255,0.6);
+  --radius: 10px;
+  --shadow-sm: 0 6px 18px rgba(16,24,40,0.06);
+  font-family: Inter, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color-scheme: light;
+}
+
+/* Page shell */
+body {
+  margin: 0;
+  background: linear-gradient(180deg, var(--bg), #eef2f7 60%);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #0f1724;
+  font-size: 15px;
+  line-height: 1.4;
+}
+.container {
+  max-width: 1100px;
+  margin: 28px auto;
+  padding: 18px;
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+.brand {
+  display:flex;
+  gap:12px;
+  align-items:center;
+}
+.brand h1 { margin:0; font-size:20px; letter-spacing: -0.3px; }
+.nav a {
+  color: var(--muted);
+  text-decoration: none;
+  margin-left: 10px;
+  padding: 8px 10px;
+  border-radius: 8px;
+}
+.nav a:hover { background: rgba(37,99,235,0.06); color: var(--accent-600); }
+
+/* Card */
+.card {
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  padding: 14px;
+}
+
+/* Form layout */
+.form-row { display:flex; gap:12px; margin-bottom:10px; align-items:center; }
+.form-row .col { flex:1; min-width:0; }
+label { display:block; font-size:13px; color:var(--muted); margin-bottom:6px; }
+.input, select, textarea {
+  width:100%;
+  padding:8px 10px;
+  border:1px solid #e6e9ef;
+  border-radius:8px;
+  background:white;
+  outline:none;
+  transition: border-color .12s, box-shadow .12s;
+}
+.input:focus, select:focus, textarea:focus {
+  border-color: var(--accent-600);
+  box-shadow: 0 8px 22px rgba(30,64,175,0.06);
+}
+
+/* Buttons */
+.btn {
+  border:0;
+  background: var(--accent);
+  color:white;
+  padding:8px 12px;
+  border-radius:10px;
+  cursor:pointer;
+  font-weight:600;
+}
+.btn.ghost {
+  background:transparent;
+  color:var(--accent-600);
+  border:1px solid rgba(30,64,175,0.06);
+}
+
+/* Table */
+.table {
+  width:100%;
+  border-collapse:collapse;
+  margin-top:12px;
+  background:transparent;
+}
+.table thead th {
+  text-align:left;
+  padding:10px 12px;
+  font-weight:700;
+  font-size:13px;
+  color:#071125;
+  border-bottom:1px solid #eef3fb;
+  background: rgba(15,23,42,0.02);
+}
+.table tbody td {
+  padding:10px 12px;
+  border-bottom:1px solid #f3f6fa;
+  vertical-align:middle;
+}
+.table tbody tr:hover { background: rgba(16,24,40,0.01); }
+
+/* small pills */
+.pill {
+  display:inline-block;
+  padding:4px 8px;
+  border-radius:999px;
+  font-size:12px;
+  color:white;
+  background: var(--accent);
+  font-weight:700;
+}
+
+/* actions */
+.action {
+  display:flex;
+  gap:6px;
+  align-items:center;
+}
+
+/* Modal (simple) */
+.modal-overlay {
+  position: fixed; inset:0;
+  display:flex; align-items:center; justify-content:center;
+  background: rgba(6,10,20,0.48);
+  z-index:9999;
+}
+.modal {
+  width: min(920px, 96%);
+  background: var(--card);
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 18px 48px rgba(2,6,23,0.28);
+  max-height: 86vh;
+  overflow:auto;
+}
+.grid-dias {
+  display:grid;
+  grid-template-columns: repeat(auto-fit,minmax(74px,1fr));
+  gap:8px;
+  margin-top:10px;
+}
+.dia {
+  display:flex; align-items:center; justify-content:space-between;
+  padding:8px; border-radius:8px; border:1px solid #eef3fb; background:#fff;
+  font-size:13px;
+}
+
+/* helpers */
+.row { display:flex; gap:12px; align-items:center; }
+.col { flex:1; }
+.muted { color:var(--muted); font-size:13px; }
+.right { text-align:right; }
+
+/* responsive */
+@media (max-width:720px){
+  .form-row { flex-direction:column; align-items:stretch; }
+  .header { flex-direction:column; align-items:flex-start; gap:8px; }
+}

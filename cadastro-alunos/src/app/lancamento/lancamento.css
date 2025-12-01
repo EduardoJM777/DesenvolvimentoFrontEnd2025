@@ -1,0 +1,87 @@
+/* ===== Lançamento (tabela + modal) ===== */
+
+/* Table */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 12px;
+  font-size: 14px;
+}
+.table thead th {
+  text-align: left;
+  padding: 10px 12px;
+  background: rgba(15,23,42,0.02);
+  font-weight: 600;
+  color: #111827;
+  border-bottom: 1px solid #eef2f6;
+}
+.table tbody td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #f3f6fa;
+  vertical-align: middle;
+}
+.table tbody tr:hover { background: rgba(16,24,40,0.01); }
+
+/* small badges */
+.badge {
+  display:inline-block;
+  padding: 4px 8px;
+  border-radius: 999px;
+  font-size: 12px;
+  color: white;
+  background: var(--accent);
+  font-weight: 600;
+}
+
+/* Action buttons inside table */
+.action-btn {
+  border: 0;
+  background: transparent;
+  padding: 6px;
+  cursor: pointer;
+  color: var(--accent-600);
+  font-weight: 700;
+}
+.action-btn.save { color: var(--success); }
+.action-btn.edit { color: var(--accent-600); }
+
+/* Modal (inline) */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background: rgba(4,6,12,0.46);
+  z-index: 9999;
+}
+.modal-card {
+  width: min(920px, 96%);
+  max-height: 86vh;
+  overflow:auto;
+  background: var(--card);
+  border-radius: 12px;
+  padding: 18px;
+  box-shadow: 0 18px 48px rgba(2,6,23,0.36);
+}
+.faltas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(80px,1fr));
+  gap: 8px;
+  margin-top: 10px;
+}
+.falta-item {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #eef2f6;
+  background: #fff;
+  font-size: 13px;
+}
+
+/* small helpers */
+.right { text-align: right; }
+.center { text-align: center; }
+.p-sm { padding: 6px; }

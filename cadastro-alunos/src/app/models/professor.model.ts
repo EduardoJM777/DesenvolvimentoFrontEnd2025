@@ -1,7 +1,6 @@
 export interface Professor {
-    id: number;
+    id?: number | null;
     matricula: string;
     nome: string;
     cpf: string;
-    dtAdmissao: string;
 }

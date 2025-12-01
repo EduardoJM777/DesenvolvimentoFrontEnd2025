@@ -1,12 +1,12 @@
+import { Disciplina } from "./disciplina.model";
+
 export interface Aluno {
+    id?: number | null;
     ra: string;
     nome: string;
-    dtNascimento: string;
-    curso: string;
-    cep: string;
-    logradouro: string;
-    bairro: string;
-    municipio: string;
-    uf: string;
-}
+    cpf: string;
+    anoIngresso: number;
+    periodoAtual: number;
 
+    disciplina: Disciplina;
+}

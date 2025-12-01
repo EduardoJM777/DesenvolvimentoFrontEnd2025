@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { ProfessorService } from '../services/professor.service';
 import { Professor } from '../models/professor.model';
 import { Router } from '@angular/router';
-//import { Disciplina } from '../models/disciplina.model';
 import { DisciplinaService } from '../services/disciplina.service';
 
 @Component({
@@ -16,26 +15,24 @@ import { DisciplinaService } from '../services/disciplina.service';
 
 export class ProfessorComponent {
 
-  novoProfessor: Professor = {id: 0, matricula: '', nome: '', cpf: '', dtAdmissao: ''};
+  novoProfessor: Professor = {id: null, matricula: '', nome: '', cpf: ''};
   listaProfessores: Professor[] = [];
 
-  // novaDisciplina: Disciplina = {nome:'',
-  //   professor:{id: 0, matricula:'', nome: '', cpf:'', dtAdmissao:''}, 
-  //                               professorId: 0, curso:'' };
-
-  constructor(private professorService: ProfessorService, private discipinaService: DisciplinaService, private router: Router){
-    this.listaProfessores = this.professorService.getProfessores();
+  constructor(private professorService: ProfessorService, private router: Router){
+    this.professorService.listar().subscribe({
+      next: (dados) => this.listaProfessores = dados,
+      error: (err) => console.error(err)
+    });
   }
 
   adicionarProfessor(){
-    this.professorService.adicionarProfessor({ ...this.novoProfessor });
-    this.novoProfessor = {id: 0, matricula: '', nome: '', cpf: '', dtAdmissao: ''};
+    this.professorService.salvar({ ...this.novoProfessor }).subscribe({
+      next: (resp) => {
+        this.listaProfessores.push(resp);
+        this.novoProfessor = { id: null, matricula: '', nome: '', cpf: '' };
+      }
+    });
   }
-
-  // listaDisciplinas(){
-  //   this.discipinaService.adicionarDisciplina({...this.novaDisciplina});
-  //   this.novaDisciplina = {nome: '', professor:{id: 0, matricula: '', nome: '', cpf:'', dtAdmissao: ''}, professorId: 0, curso: ''};
-  // }
 
   cadAluno(){
     this.router.navigate(['']);
